@@ -1,0 +1,44 @@
+pawked@pawked-HP-EliteBook-840-G4:~/Pulpit/SO/lista 3$ echo Pawel Kedzierski 272400
+Pawel Kedzierski 272400
+pawked@pawked-HP-EliteBook-840-G4:~/Pulpit/SO/lista 3$ ./zad2.bash 15 https://repo.cs.pwr.edu.pl/info/SP/l3/a/
+     10 b
+     10 a
+      6 ab
+      3 bb
+      3 aa
+      2 abb
+      2 aab
+      1 bbb
+      1 bab
+      1 abbbb
+      1 abbab
+      1 ababb
+      1 abaab
+      1 aba
+      1 aabbb
+      1 aabab
+      1 aaabb
+      1 aaaab
+      1 aaa
+pawked@pawked-HP-EliteBook-840-G4:~/Pulpit/SO/lista 3$ ./zad2.bash 23 https://repo.cs.pwr.edu.pl/info/SP/l3/a/
+      6 a
+      5 b
+      4 ab
+      3 c
+      3 aa
+      2 d
+      2 aab
+      1 bb
+      1 bab
+      1 abbbb
+      1 abbab
+      1 abb
+      1 ababb
+      1 abaab
+      1 aba
+      1 aabbb
+      1 aabab
+      1 aaabb
+      1 aaaab
+      1 aaa
+

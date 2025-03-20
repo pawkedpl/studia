@@ -1,0 +1,712 @@
+        
+pawked@pawked-HP-EliteBook-840-G4:~$ export GIT_SSH_COMMAND="ssh -i ~/klucze"                 
+pawked@pawked-HP-EliteBook-840-G4:~$ git clone ssh://git@156.17.7.16:59004/24-25-1-p-2        
+Cloning into '24-25-1-p-2'...                  
+remote: Enumerating objects: 289, done.        
+remote: Counting objects: 100% (289/289), done.
+remote: Compressing objects: 100% (289/289), done.                                            
+remote: Total 289 (delta 183), reused 0 (delta 0), pack-reused 0                              
+Receiving objects: 100% (289/289), 34.42 KiB | 1.27 MiB/s, done.                              
+Resolving deltas: 100% (183/183), done.        
+pawked@pawked-HP-EliteBook-840-G4:~$ cd        
+pawked@pawked-HP-EliteBook-840-G4:~$ cd 24-25-1-p-2/                                          
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git checkout -b 272400                       
+Switched to a new branch '272400'              
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git branch -l                                
+* 272400               
+  master               
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ ls                                           
+main.c                s272355_podprogram.c  s272374_podprogram.c  s272395_podprogram.c        
+makefile              s272358_podprogram.c  s272378_podprogram.c  s272398_podprogram.c        
+program.h             s272359_podprogram.c  s272380_podprogram.c  s274037_podprogram.c        
+program_usage.c       s272360_podprogram.c  s272381_podprogram.c  s276588_podprogram.c        
+s0_podprogram.c       s272361_podprogram.c  s272382_podprogram.c  s276749_podprogram.c        
+s272351_podprogram.c  s272366_podprogram.c  s272383_podprogram.c  s999.c                      
+s272352_podprogram.c  s272368_podprogram.c  s272388_podprogram.c                              
+s272353_podprogram.c  s272369_podprogram.c  s272389_podprogram.c                              
+s272354_podprogram.c  s272370_podprogram.c  s272392_podprogram.c                              
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ nano s272400_podprogram.c                    
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ ls                                           
+main.c                s272355_podprogram.c  s272374_podprogram.c  s272395_podprogram.c        
+makefile              s272358_podprogram.c  s272378_podprogram.c  s272398_podprogram.c        
+program.h             s272359_podprogram.c  s272380_podprogram.c  s272400_podprogram.c        
+program_usage.c       s272360_podprogram.c  s272381_podprogram.c  s274037_podprogram.c        
+s0_podprogram.c       s272361_podprogram.c  s272382_podprogram.c  s276588_podprogram.c        
+s272351_podprogram.c  s272366_podprogram.c  s272383_podprogram.c  s276749_podprogram.c        
+s272352_podprogram.c  s272368_podprogram.c  s272388_podprogram.c  s999.c                      
+s272353_podprogram.c  s272369_podprogram.c  s272389_podprogram.c                              
+s272354_podprogram.c  s272370_podprogram.c  s272392_podprogram.c                              
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ nano makefile                                
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ nano main.c                                  
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ nano main.c                                  
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ nano program.h                               
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ nano program.h                               
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ make                                         
+cc    -c -o main.o main.c                      
+main.c: In function ‘main’:                    
+main.c:71:28: error: expected ‘;’ before ‘:’ token                                            
+   71 |        s272400_podprogram():           
+      |                            ^           
+      |                            ;           
+make: *** [<builtin>: main.o] Error 1          
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ nano main.c                                  
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ make                                         
+cc    -c -o main.o main.c                      
+cc    -c -o program_usage.o program_usage.c    
+cc    -c -o s0_podprogram.o s0_podprogram.c    
+cc    -c -o s272383_podprogram.o s272383_podprogram.c                                         
+cc    -c -o s272354_podprogram.o s272354_podprogram.c                                         
+cc    -c -o s272370_podprogram.o s272370_podprogram.c                                         
+cc    -c -o s272388_podprogram.o s272388_podprogram.c                                         
+cc    -c -o s272398_podprogram.o s272398_podprogram.c                                         
+cc    -c -o s272395_podprogram.o s272395_podprogram.c                                         
+cc    -c -o s272369_podprogram.o s272369_podprogram.c                                         
+cc    -c -o s272351_podprogram.o s272351_podprogram.c                                         
+cc    -c -o s272355_podprogram.o s272355_podprogram.c                                         
+cc    -c -o s272389_podprogram.o s272389_podprogram.c                                         
+cc    -c -o s272352_podprogram.o s272352_podprogram.c                                         
+cc    -c -o s272358_podprogram.o s272358_podprogram.c                                         
+cc    -c -o s272378_podprogram.o s272378_podprogram.c                                         
+cc    -c -o s276588_podprogram.o s276588_podprogram.c                                         
+cc    -c -o s272381_podprogram.o s272381_podprogram.c                                         
+cc    -c -o s272359_podprogram.o s272359_podprogram.c                                         
+cc    -c -o s272360_podprogram.o s272360_podprogram.c                                         
+cc    -c -o s272382_podprogram.o s272382_podprogram.c                                         
+cc    -c -o s272400_podprogram.o s272400_podprogram.c                                         
+cc    -c -o s274037_podprogram.o s274037_podprogram.c                                         
+cc    -c -o s272374_podprogram.o s272374_podprogram.c                                         
+cc    -c -o s272353_podprogram.o s272353_podprogram.c                                         
+cc    -c -o s272361_podprogram.o s272361_podprogram.c                                         
+cc    -c -o s272392_podprogram.o s272392_podprogram.c                                         
+cc    -c -o s276749_podprogram.o s276749_podprogram.c                                         
+cc    -c -o s272366_podprogram.o s272366_podprogram.c                                         
+cc    -c -o s272368_podprogram.o s272368_podprogram.c                                         
+cc    -c -o s272380_podprogram.o s272380_podprogram.c                                         
+cc    -c -o s999.o s999.c                      
+cc -o program main.o program_usage.o s0_podprogram.o s272383_podprogram.o s272354_podprogram.o s272370_podprogram.o s272388_podprogram.o s272398_podprogram.o s272395_podprogram.o s272369_podprogram.o s272351_podprogram.o s272355_podprogram.o s272389_podprogram.o s272352_podprogram.o s272358_podprogram.o s272378_podprogram.o s276588_podprogram.o s272381_podprogram.o s272359_podprogram.o s272360_podprogram.o s272382_podprogram.o s272400_podprogram.o s274037_podprogram.o s272374_podprogram.o s272353_podprogram.o s272361_podprogram.o s272392_podprogram.o s276749_podprogram.o s272366_podprogram.o s272368_podprogram.o s272380_podprogram.o s999.o           
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ ./program 272400                             
+Student nr indeksu: 272400                     
+Program wczytuje liczbę całkowitą i zwraca ją pomnożoną przez 420                             
+Podaj liczbę x: 2      
+Liczba x pomnożona przez 420 wynosi: 840       
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ make clean                                   
+rm *.o program         
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ ls                                           
+main.c                s272355_podprogram.c  s272374_podprogram.c  s272395_podprogram.c        
+makefile              s272358_podprogram.c  s272378_podprogram.c  s272398_podprogram.c        
+program.h             s272359_podprogram.c  s272380_podprogram.c  s272400_podprogram.c        
+program_usage.c       s272360_podprogram.c  s272381_podprogram.c  s274037_podprogram.c        
+s0_podprogram.c       s272361_podprogram.c  s272382_podprogram.c  s276588_podprogram.c        
+s272351_podprogram.c  s272366_podprogram.c  s272383_podprogram.c  s276749_podprogram.c        
+s272352_podprogram.c  s272368_podprogram.c  s272388_podprogram.c  s999.c                      
+s272353_podprogram.c  s272369_podprogram.c  s272389_podprogram.c                              
+s272354_podprogram.c  s272370_podprogram.c  s272392_podprogram.c                              
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git status                                   
+On branch 272400       
+Changes not staged for commit:                 
+  (use "git add <file>..." to update what will be committed)                                  
+  (use "git restore <file>..." to discard changes in working directory)                       
+        modified:   main.c                     
+        modified:   makefile                   
+        modified:   program.h                  
+
+Untracked files:       
+  (use "git add <file>..." to include in what will be committed)                              
+        s272400_podprogram.c                   
+
+no changes added to commit (use "git add" and/or "git commit -a")                             
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git add .                                    
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git status                                   
+On branch 272400       
+Changes to be committed:                       
+  (use "git restore --staged <file>..." to unstage)                                           
+        modified:   main.c                     
+        modified:   makefile                   
+        modified:   program.h                  
+        new file:   s272400_podprogram.c       
+
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git diff                                     
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git commit -m 'add: 272400'                  
+Author identity unknown                        
+
+*** Please tell me who you are.                
+
+Run                    
+
+  git config --global user.email "you@example.com"                                            
+  git config --global user.name "Your Name"    
+
+to set your account's default identity.        
+Omit --global to set the identity only in this repository.                                    
+
+fatal: unable to auto-detect email address (got 'pawked@pawked-HP-EliteBook-840-G4.(none)')   
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git config --global user.email "272400@student.pwr.edu.pl"                                                                                 
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git config --global user.name "pawked"       
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git commit -m 'add: 272400'                  
+[272400 ecb0cff] add: 272400                   
+ 4 files changed, 18 insertions(+)             
+ create mode 100644 s272400_podprogram.c       
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git status                                   
+On branch 272400       
+nothing to commit, working tree clean          
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git push                                     
+fatal: The current branch 272400 has no upstream branch.                                      
+To push the current branch and set the remote as upstream, use                                
+
+    git push --set-upstream origin 272400      
+
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git push --set-upstream origin 272400        
+Enumerating objects: 10, done.                 
+Counting objects: 100% (10/10), done.          
+Delta compression using up to 4 threads        
+Compressing objects: 100% (6/6), done.         
+Writing objects: 100% (6/6), 760 bytes | 253.00 KiB/s, done.                                  
+Total 6 (delta 4), reused 0 (delta 0), pack-reused 0                                          
+To ssh://156.17.7.16:59004/24-25-1-p-2         
+ * [new branch]      272400 -> 272400          
+Branch '272400' set up to track remote branch '272400' from 'origin'.                         
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git checkout master                          
+Switched to branch 'master'                    
+Your branch is up to date with 'origin/master'.                                               
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git merge 272400                             
+Updating 89ba7b7..ecb0cff                      
+Fast-forward           
+ main.c               |  3 +++                 
+ makefile             |  1 +                   
+ program.h            |  1 +                   
+ s272400_podprogram.c | 13 +++++++++++++       
+ 4 files changed, 18 insertions(+)             
+ create mode 100644 s272400_podprogram.c       
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git status                                   
+On branch master       
+Your branch is ahead of 'origin/master' by 1 commit.                                          
+  (use "git push" to publish your local commits)                                              
+
+nothing to commit, working tree clean          
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git push                                     
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0                                          
+To ssh://156.17.7.16:59004/24-25-1-p-2         
+   89ba7b7..ecb0cff  master -> master          
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git branch -d 272400                         
+Deleted branch 272400 (was ecb0cff).           
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git branch -l                                
+* master               
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git tag 272400                               
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git push --tags                              
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0                                          
+To ssh://156.17.7.16:59004/24-25-1-p-2         
+ * [new tag]         272400 -> 272400          
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git tag                                      
+272400                 
+s2722355               
+s272351                
+s272358                
+s272362                
+s272362_               
+s272366                
+s272369                
+s272374                
+s272380                
+s272383                
+272400                 
+s2722355               
+s272351                
+s272358                
+s272362                
+s272362_               
+s272366                
+s272369                
+s272374                
+s272380                
+s272383                
+s272388                
+s272389                
+s272392                
+s999                   
+tag_branch_276749      
+v_272353_              
+v_272354               
+v_272361               
+v_272361_v2            
+v_272368               
+v_272370               
+v_272375               
+v_272378               
+v_272381               
+v_272382_              
+v_272394               
+v_272398               
+v_272398_              
+v_272398_old           
+v_272402               
+v_274037               
+v_276588               
+v_s272352              
+v_s272359              
+v_s272360              
+v_s272395              
+v_s276749              
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ tmux capture-pane -p -S'-' -E'-' -J >> my-log1                      
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ cd ..                                        
+pawked@pawked-HP-EliteBook-840-G4:~$ rm -rf 24-25-1-p-2/                                      
+pawked@pawked-HP-EliteBook-840-G4:~$ git clone ssh://git@156.17.7.16:59004/24-25-1-p-2        
+Cloning into '24-25-1-p-2'...                  
+remote: Enumerating objects: 295, done.        
+remote: Counting objects: 100% (295/295), done.
+remote: Compressing objects: 100% (295/295), done.                                            
+remote: Total 295 (delta 187), reused 0 (delta 0), pack-reused 0                              
+Receiving objects: 100% (295/295), 35.37 KiB | 312.00 KiB/s, done.                            
+Resolving deltas: 100% (187/187), done.        
+pawked@pawked-HP-EliteBook-840-G4:~$ cd 24-25-1-p-2/                                          
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git checkout 272400                          
+Note: switching to '272400'.                   
+
+You are in 'detached HEAD' state. You can look around, make experimental                      
+changes and commit them, and you can discard any commits you make in this                     
+state without impacting any branches by switching back to a branch.                           
+
+If you want to create a new branch to retain commits you create, you may                      
+do so (now or later) by using -c with the switch command. Example:                            
+
+  git switch -c <new-branch-name>              
+
+Or undo this operation with:                   
+
+  git switch -         
+
+Turn off this advice by setting config variable advice.detachedHead to false                  
+
+HEAD is now at ecb0cff add: 272400             
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git show                                     
+commit ecb0cff915132d45df59733eaddee3931c0296ce (HEAD, tag: 272400, origin/master, origin/HEAD, origin/272400, master)                       
+Author: pawked <272400@student.pwr.edu.pl>     
+Date:   Wed Dec 4 17:56:01 2024 +0100          
+
+    add: 272400        
+
+diff --git a/main.c b/main.c                   
+index f29c2f4..bca4a2c 100644                  
+--- a/main.c           
++++ b/main.c           
+@@ -67,6 +67,9 @@ int main(int argc, char *argv[])                                            
+     case 272360: /* podprogram studenta 272360 */                                            
+       s272360_podprogram();                   
+       break;          
++    case 272400: /*podprogram studenta 272400 */                                             
++       s272400_podprogram();                  
++      break;          
+     case 276588: /* podprogram studenta 276588 */                                            
+       s276588_podprogram();                   
+       break;          
+diff --git a/makefile b/makefile               
+index 3243ce8..974bec2 100644                  
+--- a/makefile         
++++ b/makefile         
+@@ -18,6 +18,7 @@ objects = main.o program_usage.o \                                          
+           s272359_podprogram.o \              
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ make                                         
+cc    -c -o main.o main.c                      
+cc    -c -o program_usage.o program_usage.c    
+cc    -c -o s0_podprogram.o s0_podprogram.c    
+cc    -c -o s272383_podprogram.o s272383_podprogram.c                                         
+cc    -c -o s272354_podprogram.o s272354_podprogram.c                                         
+cc    -c -o s272370_podprogram.o s272370_podprogram.c                                         
+cc    -c -o s272388_podprogram.o s272388_podprogram.c                                         
+cc    -c -o s272398_podprogram.o s272398_podprogram.c                                         
+cc    -c -o s272395_podprogram.o s272395_podprogram.c                                         
+cc    -c -o s272369_podprogram.o s272369_podprogram.c                                         
+cc    -c -o s272351_podprogram.o s272351_podprogram.c                                         
+cc    -c -o s272355_podprogram.o s272355_podprogram.c                                         
+cc    -c -o s272389_podprogram.o s272389_podprogram.c                                         
+cc    -c -o s272352_podprogram.o s272352_podprogram.c                                         
+cc    -c -o s272358_podprogram.o s272358_podprogram.c                                         
+cc    -c -o s272378_podprogram.o s272378_podprogram.c                                         
+cc    -c -o s276588_podprogram.o s276588_podprogram.c                                         
+cc    -c -o s272381_podprogram.o s272381_podprogram.c                                         
+cc    -c -o s272359_podprogram.o s272359_podprogram.c                                         
+cc    -c -o s272360_podprogram.o s272360_podprogram.c                                         
+cc    -c -o s272382_podprogram.o s272382_podprogram.c                                         
+cc    -c -o s272400_podprogram.o s272400_podprogram.c                                         
+cc    -c -o s274037_podprogram.o s274037_podprogram.c                                         
+cc    -c -o s272374_podprogram.o s272374_podprogram.c                                         
+cc    -c -o s272353_podprogram.o s272353_podprogram.c                                         
+cc    -c -o s272361_podprogram.o s272361_podprogram.c                                         
+cc    -c -o s272392_podprogram.o s272392_podprogram.c                                         
+cc    -c -o s276749_podprogram.o s276749_podprogram.c                                         
+cc    -c -o s272366_podprogram.o s272366_podprogram.c                                         
+cc    -c -o s272368_podprogram.o s272368_podprogram.c                                         
+cc    -c -o s272380_podprogram.o s272380_podprogram.c                                         
+cc    -c -o s999.o s999.c                      
+cc -o program main.o program_usage.o s0_podprogram.o s272383_podprogram.o s272354_podprogram.o s272370_podprogram.o s272388_podprogram.o s272398_podprogram.o s272395_podprogram.o s272369_podprogram.o s272351_podprogram.o s272355_podprogram.o s272389_podprogram.o s272352_podprogram.o s272358_podprogram.o s272378_podprogram.o s276588_podprogram.o s272381_podprogram.o s272359_podprogram.o s272360_podprogram.o s272382_podprogram.o s272400_podprogram.o s274037_podprogram.o s272374_podprogram.o s272353_podprogram.o s272361_podprogram.o s272392_podprogram.o s276749_podprogram.o s272366_podprogram.o s272368_podprogram.o s272380_podprogram.o s999.o           
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ ./program 272400                             
+Student nr indeksu: 272400                     
+Program wczytuje liczbę całkowitą i zwraca ją pomnożoną przez 420                             
+Podaj liczbę x: 2      
+Liczba x pomnożona przez 420 wynosi: 840       
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ git log --all --graph --decorate             
+* commit ecb0cff915132d45df59733eaddee3931c0296ce (HEAD, tag: 272400, origin/master, origin/HEAD, origin/272400, master)                     
+| Author: pawked <272400@student.pwr.edu.pl>   
+| Date:   Wed Dec 4 17:56:01 2024 +0100        
+|                      
+|     add: 272400      
+|                      
+* commit 89ba7b74f6794c29241fd68f2d3b9aa47885e980 (tag: v_272394, tag: s272380, origin/s272380)                      
+| Author: Konrad Czubiński <konczu.03@wp.pl>   
+| Date:   Tue Dec 3 21:17:01 2024 +0100        
+|                      
+|     Dodano rozwiązanie studenta 272380       
+|                      
+| * commit 92257a386a839c4c0c56d292d234fa9f6f49d210 (tag: v_272402)                           
+|/  Author: github-actions <github-actions@github.com>                                        
+|   Date:   Tue Dec 3 18:27:55 2024 +0100      
+|                      
+|       Poprogram 272402                       
+|                      
+* commit ceb2ac3f519496e0507e36f2412250f6ce241f83 (tag: v_272368, origin/branch-272368)       
+| Author: wiktorgrzymski <wiktor.grzymski@gmail.com>                                          
+| Date:   Tue Dec 3 17:19:33 2024 +0100        
+|                      
+|     Student 272368 utworzył swój podprogram na branchu.                                     
+|                      
+* commit 0e408755aa28203073a1ddbc5737ffd09cc32d08 (tag: v_s272360, origin/s272360)            
+| Author: przemek_bog <42249946+przemekbog@users.noreply.github.com>                          
+| Date:   Tue Dec 3 16:14:05 2024 +0100        
+|                      
+|     Zmiany studenta 272360                   
+|                      
+* commit 148b77d92bfa516c39c80b82d099e879ea6d750f (tag: s272366, origin/branch-272366)        
+| Author: Natalia Wolniewicz <natalia.wolniewicz128@gmail.com>                                
+| Date:   Tue Dec 3 11:36:42 2024 +0100        
+|                      
+|     podprogram studenta 272366               
+|                      
+* commit c3c6fc200aa5a11bbf12cb0aa7a2236267d907f9 (tag: tag_branch_276749, origin/branch_27674
+9)                     
+| Author: Aleksandra <276749@student.pwr.edu.pl>                                              
+| Date:   Tue Dec 3 00:53:41 2024 +0100        
+|                      
+|     Dodawanie s276749_podprogram.c           
+|                      
+* commit 4bf62d938c00f36821a86fb073cb70588f04067c                                             
+| Author: Aleksandra <276749@student.pwr.edu.pl>                                              
+| Date:   Tue Dec 3 00:50:30 2024 +0100        
+|                      
+|     Dodano zmiany do gałęzi branch_276749    
+|                      
+| * commit 58fc5b04b2df00eec971423c0878f7e89e4ec74b (tag: v_s276749, origin/276749)           
+| | Author: Aleksandra <276749@student.pwr.edu.pl>                                            
+| | Date:   Tue Dec 3 00:30:36 2024 +0100      
+| |                    
+| |     Dodano moduł dla numeru indeksu 276749 
+| |                    
+| *   commit 887dfc7f1a05dc854184c96404a499b665cd3438                                         
+| |\  Merge: 716b2b7 30bf3d2                   
+| | | Author: Aleksandra <276749@student.pwr.edu.pl>                                          
+| | | Date:   Tue Dec 3 00:28:47 2024 +0100    
+| | |                  
+| | |     Merge branch '276749' of ssh://156.17.7.16:59004/24-25-1-p-2 into 276749            
+| | |                  
+| | *   commit 30bf3d244a6080e757c9e98cedf8d502c0030819                                       
+| | |\  Merge: 31e3a11 433b904                 
+| |_|/  Author: Aleksandra <276749@student.pwr.edu.pl>                                        
+|/| |   Date:   Mon Dec 2 22:10:43 2024 +0100  
+| | |                  
+| | |       Rozwiązano konflikty podczas scalania z origin/master                             
+| | |                  
+| | * commit 31e3a11e640703139180d50feb025d944f356cd3                                         
+| | | Author: Aleksandra <276749@student.pwr.edu.pl>                                          
+| | | Date:   Mon Dec 2 21:34:03 2024 +0100    
+| | |                  
+| | |     Dodano moduł dla numeru indeksu 276749                                              
+| | |                  
+| * | commit 716b2b7165bbcadc749387bb9cc17b0ed5ad5e91                                         
+|/ /  Author: Aleksandra <276749@student.pwr.edu.pl>                                          
+| |   Date:   Tue Dec 3 00:24:10 2024 +0100    
+| |                    
+| |       Dodano moduł dla numeru indeksu 276749                                              
+| |                    
+* | commit 433b904c1fd1d0ab3e158be7a2b0614b3856285b (tag: s272392)                            
+|/  Author: Tymoteusz <tymoteusz.rozmiarek89@gmail.com>                                       
+|   Date:   Mon Dec 2 21:03:34 2024 +0100      
+|                      
+|       272392 zmodyfikowal pliki zrodlowe     
+|                      
+* commit 6c0484c430bba3f34eb26c3037025c34e6c1fb22 (tag: v_272361_v2, origin/272361)           
+| Author: Gabriel Szlachciak <272361@student.pwr.edu.pl>                                      
+| Date:   Mon Dec 2 19:12:26 2024 +0100        
+|                      
+|     my branch        
+|                      
+| * commit 3674a4f70df1400c89f02c1e5169e6223bbfc9e6 (origin/s272375)                          
+|/  Author: Marta Płóciniczak <marta.plociniczak09@gmail.com>                                 
+|   Date:   Mon Dec 2 12:41:26 2024 +0100      
+|                      
+|       272375 implementacja                   
+|                      
+* commit 9675a5a285906d9972d67ebd52a98ba584f8d986 (tag: v_272375, tag: v_272361, tag: v_272353
+_)                     
+| Author: Wiktor <wiktor.bachta@gmail.com>     
+| Date:   Sun Dec 1 21:29:31 2024 +0100        
+|                      
+|     dodano program 272353                    
+|                      
+* commit abed7de704af8a6d52bbaf8e5e5257840bf699ee (tag: s272374)                              
+| Author: Rafal Maczy <272374@student.pwr.edu.pl>                                             
+| Date:   Sun Dec 1 00:58:41 2024 +0100        
+|                      
+|     dodanie funkcjonalności studenta 272374  
+|                      
+*   commit b62d733b31e7cd659818cb498f8c57bc2ace1f89                                           
+|\  Merge: da87c00 e8b23e8                     
+| | Author: Krzysztof <krzysztof.jan.andrzejewski@gmail.com>                                  
+| | Date:   Sat Nov 30 19:54:18 2024 +0100     
+| |                    
+| |     272378 implementacja                   
+| |                    
+| * commit e8b23e8d56997d58050678fb131ef53faa0ef6ff (tag: v_272378)                           
+| | Author: Krzysztof <krzysztof.jan.andrzejewski@gmail.com>                                  
+| | Date:   Fri Nov 29 21:41:02 2024 +0100     
+| |                    
+| |     272378 implementacja                   
+| |                    
+* | commit da87c00425c2994b2ebe8fa847b2cefee1a755c8                                           
+| | Author: Guller <274037@student.pwr.edu.pl> 
+| | Date:   Fri Nov 29 17:51:56 2024 +0100     
+| |                    
+| |     Dodano zmiany studenta 274037          
+| |                    
+* | commit 8a5051a64daf01372f7678c60639ddacebfa39e3                                           
+| | Author: Kseniya Karetnikava <276588@student.pwr.edu.pl>                                   
+| | Date:   Sat Nov 30 17:17:28 2024 +0100     
+| |                    
+| |     Makefile       
+| |                    
+* | commit 6035bbb890ef1461b8cadcabee9b2ebb68f62c8c                                           
+| | Author: Kseniya Karetnikava <276588@student.pwr.edu.pl>                                   
+| | Date:   Sat Nov 30 16:51:43 2024 +0100     
+| |                    
+| |     Dodano zmiany 276588                   
+| |                    
+* | commit 4f4fb73f6a8fe1c238c07c5347416c122417201c (tag: v_276588)                           
+| | Author: Konrad Wolski <272382@student.pwr.edu.pl>                                         
+| | Date:   Sat Nov 30 14:03:25 2024 +0100     
+| |                    
+| |     Naprawiono s272382_podprogram.c        
+| |                    
+* | commit 2ca0a76312c4f298639e98af1291d4db4a77836c (tag: v_272382_)                          
+|/  Author: Konrad Wolski <272382@student.pwr.edu.pl>                                         
+|   Date:   Sat Nov 30 13:37:16 2024 +0100     
+|                      
+|       Dodano program dla 272382              
+|                      
+* commit 506b2a07b58b69b2a12e2ed018c61aadb9353d2a (tag: v_s272359, origin/s272359)            
+| Author: Methargus <przemek.cwalina@gmail.com>                                               
+| Date:   Fri Nov 29 21:39:32 2024 +0100       
+|                      
+|     Zadanie 1        
+|                      
+| * commit b56d6e16c12baba6e66b935d567351e917b4cbc1 (origin/s272378)                          
+|/  Author: Krzysztof <krzysztof.jan.andrzejewski@gmail.com>                                  
+|   Date:   Fri Nov 29 21:41:02 2024 +0100     
+|                      
+|       272378 implementacja                   
+|                      
+* commit 7286496e3351afb286a64ef5252d25ef2d3f770e (tag: v_274037, origin/s274037)             
+| Author: Guller <274037@student.pwr.edu.pl>   
+| Date:   Fri Nov 29 17:25:14 2024 +0100       
+|                      
+|     Dodanie podprogramu studentu 274037      
+|                      
+* commit b19c1a1fef826d35e5ef13394e74837ff5e02e7e (tag: v_272381)                             
+| Author: Jakmer <kubamerta13@gmail.com>       
+| Date:   Thu Nov 28 17:01:24 2024 +0100       
+|                      
+|     Dodano programu studenta 272381          
+|                      
+* commit 12c69ee60160f07c36fd6bf5bf65b52e31bccbe2 (tag: s272358)                              
+| Author: Tomasz <tomasz.budzynski@proton.me>  
+| Date:   Thu Nov 28 00:08:20 2024 +0100       
+|                      
+|     Dodano podprogram studenta 272358        
+|                      
+* commit ccb1a3a9654c6f8723b2749c08ca83ba8a1bebbd (tag: v_s272352)                            
+| Author: Filip Konczyk <272352@student.pwr.edu.pl>                                           
+| Date:   Wed Nov 27 19:21:55 2024 +0100       
+|                      
+|     272352 dodal pliki do projektu           
+|                      
+* commit 41ce86a28ef05fc02d2e8a3232968d6e68b6d346 (tag: s272389, origin/272389)               
+| Author: jacekpoz <jacekpoz@proton.me>        
+| Date:   Tue Nov 26 22:20:04 2024 +0100       
+|                      
+|     add the 272389 subprogram to the program 
+|                      
+* commit d0eff733d72392262804ebb4a2e8f29eae3e5d35                                             
+| Author: jacekpoz <jacekpoz@proton.me>        
+| Date:   Tue Nov 26 22:16:58 2024 +0100       
+|                      
+|     s272389 subprogram                       
+|                      
+* commit a60e175973d5e512dd3360089c99b8c68497f1eb (tag: s2722355)                             
+| Author: Anna Swierzy <swiezanka@gmail.com>   
+| Date:   Tue Nov 26 19:06:25 2024 +0100       
+|                      
+|     272355 dodała swój podprogram            
+|                      
+* commit 490641de17096e50fa91cf262308e5e1c09d1bf1 (tag: s272351, origin/b272351)              
+| Author: BlueBird <szewczykm2003@gmail.com>   
+| Date:   Mon Nov 25 17:11:47 2024 +0100       
+|                      
+|     Zmiany 272351    
+|                      
+* commit 29f004384fda936da204871cc958fe4a62201b8d (tag: s272369)                              
+| Author: Tymoteusz Kosman <tkosman03@gmail.com>                                              
+| Date:   Mon Nov 25 11:36:19 2024 +0100       
+|                      
+|     Student 272369 wprowadził swoje zmiany do programu.                                     
+|                      
+* commit fe687fbc60470a01b942af1369baeb7f1bff3877 (tag: v_s272395, origin/branches_s272395)   
+| Author: anna <anna@gmail.com>                
+| Date:   Sun Nov 24 18:37:27 2024 +0100       
+|                      
+|     Zmiana plików wspólnych (makefile, program.h, main.c) oraz dodanie pliku s272395_podprog
+ram.c przez studenta 272395                    
+|                      
+* commit 64c442474100ffcb5dfb3d7a85316eee41d64e5c (tag: v_272398_)                            
+| Author: kallazz <michael.w.kallas@gmail.com> 
+| Date:   Sat Nov 23 18:22:06 2024 +0100       
+|                      
+|     Dodano program dla 272398                
+|                      
+* commit 93f3cdf4d2408e13cad526df018f5fde896c3e46                                             
+| Author: kallazz <michael.w.kallas@gmail.com> 
+| Date:   Sat Nov 23 18:09:35 2024 +0100       
+|                      
+|     Revert "Dodano program dla 272398"       
+|                      
+|     This reverts commit 37c02cda309c0c43c016ea6e551c93482b5ae431.                           
+|                      
+* commit 37c02cda309c0c43c016ea6e551c93482b5ae431 (tag: v_272398_old, tag: v_272398)          
+| Author: kallazz <michael.w.kallas@gmail.com> 
+| Date:   Sat Nov 23 18:05:18 2024 +0100       
+|                      
+|     Dodano program dla 272398                
+|                      
+| * commit ace7b0bed4c7a3f9728783a1b4f151ebe3659f3e (tag: s272362_)                           
+|/  Author: Zofia Kuriata <zosia.kuriata7@gmail.com>                                          
+|   Date:   Sat Nov 23 08:43:30 2024 +0100     
+|                      
+|       272362 add program                     
+|                      
+* commit c210090e09cda639c0fed8e7b0c16d21205b1137                                             
+| Author: Zofia Kuriata <zosia.kuriata7@gmail.com>                                            
+| Date:   Sat Nov 23 08:37:46 2024 +0100       
+|                      
+|     delete changes 272362                    
+|                      
+* commit 5d51b9b9ff877f7076b51c8f0ea4461f3ec1ee32                                             
+| Author: Zofia Kuriata <zosia.kuriata7@gmail.com>                                            
+| Date:   Sat Nov 23 08:25:07 2024 +0100       
+|                      
+|     272362 changes again                     
+|                      
+* commit a5fc3242c8f1fccea2b10cd63ddf53885b070a8f                                             
+| Author: Zofia Kuriata <zosia.kuriata7@gmail.com>                                            
+| Date:   Sat Nov 23 08:03:06 2024 +0100       
+|                      
+|     repair makefile by 272362                
+|                      
+* commit 86ddcebde7b664bdd22757c7383f070f514b0fa4 (tag: s272362)                              
+| Author: Zofia Kuriata <zosia.kuriata7@gmail.com>                                            
+| Date:   Sat Nov 23 07:52:16 2024 +0100       
+|                      
+|     272362 changes   
+|                      
+* commit 89bfb153399f8850cb68ca63d128088404b1ba89 (tag: s272388)                              
+| Author: Domofold <domeg630@gmail.com>        
+| Date:   Fri Nov 22 18:09:06 2024 +0100       
+|                      
+|     changes 272388   
+|                      
+* commit ee13c4ec7fd2df8d0f09c0374e6c41b9de656bf7 (tag: v_272370)                             
+| Author: mpoprawa <m.poprawa23@gmail.com>     
+| Date:   Wed Nov 20 17:30:41 2024 +0100       
+|                      
+|     podprogram 272370
+|                      
+* commit 5adb43b3040b727766894d445e620867aeda7e9a (tag: v_272354, origin/272354)              
+| Author: Kinga <272354@student.pwr.edu.pl>    
+| Date:   Wed Nov 20 13:39:40 2024 +0100       
+|                      
+|     dodano rozwiązanie studenta 272354       
+|                      
+* commit 0bb6a5214bcf8ee28716d6a820070cd5842d6b7f                                             
+| Author: Kinga <272354@student.pwr.edu.pl>    
+| Date:   Wed Nov 20 13:38:02 2024 +0100       
+|                      
+|     dodano rozwiązanie studenta 272354       
+|                      
+* commit 89e98cdd8cc98450560412558a10f58a9192db6f (tag: s272383)                              
+| Author: wikto <wikto@ideapad-wikto.home>     
+| Date:   Thu Nov 14 17:15:09 2024 +0100       
+|                      
+|     Dodano podprogram s272383_podprogram.c   
+|                      
+* commit fff7624ae83a5a362a07ca898ce45efd10c875f2 (tag: s999)                                 
+| Author: Student Sztuczny 999 <999@nibyuczelnia>                                             
+| Date:   Mon Nov 10 14:30:55 2014 +0100       
+|                      
+|     Student 999 wprowadza odpowiednie poprawki w makefile i pozostałych plikach źródłowych. 
+|                      
+*   commit b495dd411d82d84c118cced42125d6fe0bd57769                                           
+|\  Merge: baf27db e0cac2e                     
+| | Author: Student Sztuczny 999 <999@nibyuczelnia>                                           
+| | Date:   Mon Nov 10 13:59:02 2014 +0100     
+| |                    
+| |     Merge branch 'master' into branch-999  
+| |                    
+| |     Student 999 dokonał synchronizacji swojej gałęzi ze zmianami dokonanymi przez admina w
+ origin/master.        
+| |     Polecenia:     
+| |       git checkout master                  
+| |       git pull     
+| |       git checkout branch-999              
+| |       git merge master                     
+| |                    
+| * commit e0cac2e9636ab179b95340d4f19c1b1ed4234c76                                           
+| | Author: admin <Marcin.Kik@pwr.edu.pl>      
+| | Date:   Mon Nov 10 13:54:58 2014 +0100     
+| |                    
+| |     admin wprowadza poprawki w pliku makefile.                                            
+| |                    
+* | commit baf27dba822c9b17c97baddf3bf5324811b24860                                           
+|/  Author: Student Sztuczny 999 <999@nibyuczelnia>                                           
+|   Date:   Mon Nov 10 13:45:43 2014 +0100     
+|                      
+|       Student 999 tworzy swoją gałąź i przełącza się na nią,                                
+|       wykonując  polecenia:                  
+|                      
+|         git branch branch-999                
+|         git checkout branch-999              
+|                      
+|       Student 999 dodaje plik s999.c z podprogramem, ale jeszcze nie                        
+|       uwzględnił go w makefile i pozostałych plikach źródłowych.                            
+|                      
+* commit 871c4727e2370ff70fbff9878c222e33ba5e2b4f                                             
+| Author: admin <Marcin.Kik@pwr.edu.pl>        
+| Date:   Mon Nov 10 12:53:38 2014 +0100       
+|                      
+|         admin wprowadza trochę poprawek do organizacji projektu:                            
+|                      
+|         - dodany został plik: makefile -- teraz program kompiluje się poleceniem make       
+|         - dodany został szablonowy przykład podprogramu -- pilk: s0_podprogram.c            
+|                      
+* commit 2ccbb68c9bfb88a15caf7884ec3877837bc4be79                                             
+  Author: admin <Marcin.Kik@pwr.edu.pl>        
+  Date:   Mon Nov 10 12:36:14 2014 +0100       
+                       
+      admin tworzy pliki z wstępną wersją projektu                                            
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ tmux capture-pane -p -S'-' -E'-' -J >> my-log2                      
+pawked@pawked-HP-EliteBook-840-G4:~/24-25-1-p-2$ tmux capture-pane -p -S'-' -E'-' -J >> my-log
+3                      
+

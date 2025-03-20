@@ -1,0 +1,24 @@
+#!/bin/bash
+if [ $# -ne 2 ]; then
+    echo "Niepoprawne uzycie pliku"
+    exit 1
+fi
+
+revision=$1
+repo_url=$2
+temp_dir=$(mktemp -d)
+svn checkout -r $revision $repo_url $temp_dir >/dev/null
+
+if [ $? -ne 0 ]; then
+    echo "Nie mozna pobrac repo"
+    rm -rf $temp_dir
+    exit 1
+fi
+
+text_files=$(find $temp_dir -type f -not -path "*/.svn/*" -exec file {} \; | grep " text" | cut -d: -f1)
+
+(for f in $text_files; do
+   grep -oE '\w+' "$f" | tr '[:upper:]' '[:lower:]' | sort -u | sed "s|^|$f |"
+done) | awk '{print $2, $1}' | sort | uniq | awk '{count[$1]++} END{for(w in count) print count[w], w}' | sort -nr
+
+rm -rf $temp_dir

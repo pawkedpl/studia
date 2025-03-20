@@ -1,0 +1,168 @@
+pawked@pawked-HP-EliteBook-840-G4:~/Pulpit/zadanie/l3$ git log --stat | grep -v '^commit ' | grep -v '^Author: ' | grep -v '^Date: '
+
+    usunięcie katalogu
+    
+    Usunięcie kolejnego podkatalogu:
+    a/bb
+    
+    
+    
+    git-svn-id: https://repo.cs.pwr.edu.pl/info/SP-20-21/l3@21 b40b51a2-55d7-4e73-867d-632c98f57a06
+
+ a/bb/b/abbb | 3 ---
+ 1 file changed, 3 deletions(-)
+
+
+    usunięcie katalogu
+    
+    
+    git-svn-id: https://repo.cs.pwr.edu.pl/info/SP-20-21/l3@20 b40b51a2-55d7-4e73-867d-632c98f57a06
+
+ a/b/ab    | 2 --
+ a/b/b/abb | 3 ---
+ 2 files changed, 5 deletions(-)
+
+
+    nowa rewizja
+    
+    
+    git-svn-id: https://repo.cs.pwr.edu.pl/info/SP-20-21/l3@18 b40b51a2-55d7-4e73-867d-632c98f57a06
+
+ a/baa/dc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+
+    nowa rewizja
+    
+    
+    git-svn-id: https://repo.cs.pwr.edu.pl/info/SP-20-21/l3@17 b40b51a2-55d7-4e73-867d-632c98f57a06
+
+ a/ba/b/abab | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+
+    nowa rewizja
+    
+    
+    git-svn-id: https://repo.cs.pwr.edu.pl/info/SP-20-21/l3@16 b40b51a2-55d7-4e73-867d-632c98f57a06
+
+ a/b/ab | 1 +
+ 1 file changed, 1 insertion(+)
+
+
+    Dane do listy 3.
+    
+    
+    git-svn-id: https://repo.cs.pwr.edu.pl/info/SP-20-21/l3@15 b40b51a2-55d7-4e73-867d-632c98f57a06
+
+ a/a/b/aab     | 3 +++
+ a/aa/b/aaab   | 3 +++
+ a/aaa/b/aaaab | 1 +
+ a/aab/b/aaabb | 1 +
+ a/ab/b/aabb   | 3 +++
+ a/aba/b/aabab | 1 +
+ a/abb/b/aabbb | 1 +
+ a/b/ab        | 1 +
+ a/b/b/abb     | 3 +++
+ a/ba/b/abab   | 3 +++
+ a/baa/b/abaab | 1 +
+ a/bab/b/ababb | 1 +
+ a/bb/b/abbb   | 3 +++
+ a/bba/b/abbab | 1 +
+ a/bbb/b/abbbb | 1 +
+ 15 files changed, 27 insertions(+)
+
+
+pawked@pawked-HP-EliteBook-840-G4:~/Pulpit/zadanie/l3$ git log --stat
+commit 4534e03342f4ac99439a8cc152394b49dbb921fb (HEAD -> master, git-svn)
+Author: admin <admin@b40b51a2-55d7-4e73-867d-632c98f57a06>
+Date:   Sat Nov 28 19:34:42 2020 +0000
+
+    usunięcie katalogu
+    
+    Usunięcie kolejnego podkatalogu:
+    a/bb
+    
+    
+    
+    git-svn-id: https://repo.cs.pwr.edu.pl/info/SP-20-21/l3@21 b40b51a2-55d7-4e73-867d-632c98f57a06
+
+ a/bb/b/abbb | 3 ---
+ 1 file changed, 3 deletions(-)
+
+commit b2858e7ccbc48d40150f0f671326093e26fa85e2
+Author: admin <admin@b40b51a2-55d7-4e73-867d-632c98f57a06>
+Date:   Sat Nov 28 19:03:03 2020 +0000
+
+    usunięcie katalogu
+    
+    
+    git-svn-id: https://repo.cs.pwr.edu.pl/info/SP-20-21/l3@20 b40b51a2-55d7-4e73-867d-632c98f57a06
+
+ a/b/ab    | 2 --
+ a/b/b/abb | 3 ---
+ 2 files changed, 5 deletions(-)
+
+commit 97fd2b9770f748037fb54284a7a77626f22630d0
+Author: admin <admin@b40b51a2-55d7-4e73-867d-632c98f57a06>
+Date:   Sun Nov 8 15:36:23 2020 +0000
+
+    nowa rewizja
+    
+    
+    git-svn-id: https://repo.cs.pwr.edu.pl/info/SP-20-21/l3@18 b40b51a2-55d7-4e73-867d-632c98f57a06
+
+ a/baa/dc | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 001e7057ff1b29ff62109d4fb71573afd54bc4d1
+Author: admin <admin@b40b51a2-55d7-4e73-867d-632c98f57a06>
+Date:   Sun Nov 8 14:11:08 2020 +0000
+
+    nowa rewizja
+    
+    
+    git-svn-id: https://repo.cs.pwr.edu.pl/info/SP-20-21/l3@17 b40b51a2-55d7-4e73-867d-632c98f57a06
+
+ a/ba/b/abab | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit b67ffd9bcc70d001d8f54af409ae77da9ae11136
+Author: admin <admin@b40b51a2-55d7-4e73-867d-632c98f57a06>
+Date:   Sun Nov 8 14:09:08 2020 +0000
+
+    nowa rewizja
+    
+    
+    git-svn-id: https://repo.cs.pwr.edu.pl/info/SP-20-21/l3@16 b40b51a2-55d7-4e73-867d-632c98f57a06
+
+ a/b/ab | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit d9dd0d5fc10c83d70017eee6d4d60ba008ce1c53
+Author: admin <admin@b40b51a2-55d7-4e73-867d-632c98f57a06>
+Date:   Sun Nov 8 13:57:38 2020 +0000
+
+    Dane do listy 3.
+    
+    
+    git-svn-id: https://repo.cs.pwr.edu.pl/info/SP-20-21/l3@15 b40b51a2-55d7-4e73-867d-632c98f57a06
+
+ a/a/b/aab     | 3 +++
+ a/aa/b/aaab   | 3 +++
+ a/aaa/b/aaaab | 1 +
+ a/aab/b/aaabb | 1 +
+ a/ab/b/aabb   | 3 +++
+ a/aba/b/aabab | 1 +
+ a/abb/b/aabbb | 1 +
+ a/b/ab        | 1 +
+ a/b/b/abb     | 3 +++
+ a/ba/b/abab   | 3 +++
+ a/baa/b/abaab | 1 +
+ a/bab/b/ababb | 1 +
+ a/bb/b/abbb   | 3 +++
+ a/bba/b/abbab | 1 +
+ a/bbb/b/abbbb | 1 +
+ 15 files changed, 27 insertions(+)
+
+
