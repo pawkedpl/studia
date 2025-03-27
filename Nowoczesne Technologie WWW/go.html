@@ -1,0 +1,49 @@
+﻿<!-- go.html -->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">O mnie</a></li>
+                <li><a href="projects.html">Projekty</a></li>
+                <li><a href="interests.html">Zainteresowania</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Go</h1>
+        <p>Wraz z moim kolegą na studiach zrobiłem implementacje gry w Go. W grze gracze stawiają na przemian czarne i białe kamienie na planszy. Kamieni raz postawionych nie można przesunąć, można je natomiast zbić. Celem jest otoczenie na początkowo pustej planszy terytorium większego od terytorium przeciwnika.</p>
+
+        <h2>Przykładowy fragment kodu:</h2>
+        <pre><code>
+class GoGame:
+    def __init__(self, rozmiar=19):
+        self.plansza = [[None for _ in range(rozmiar)] for _ in range(rozmiar)]
+
+    def dodaj_kamien(self, x, y, kolor):
+        if self.plansza[x][y] is None:
+            self.plansza[x][y] = kolor
+        else:
+            print("Pole jest już zajęte.")
+
+gra = GoGame()
+gra.dodaj_kamien(3, 3, "czarny")
+</code></pre>
+
+        <p><strong>Komentarz:</strong> Kod odpowiedzialny za ruch po planszy kamieni</p>
+    </main>
+
+    <footer>
+        <p>© 2025 Paweł Kędzierski</p>
+    </footer>
+</body>
+</html>
