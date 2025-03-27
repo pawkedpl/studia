@@ -1,66 +1,53 @@
 import numpy as np
 import gzip
-import struct
-import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
+from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
+import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Funkcja do wczytywania danych z formatu IDX (używanego w EMNIST)
-def load_images(filename):
-    with gzip.open(filename, 'rb') as f:
-        # Wczytujemy dane
-        f.read(4)  # Magic number
-        num_images = struct.unpack('>I', f.read(4))[0]
-        rows = struct.unpack('>I', f.read(4))[0]
-        cols = struct.unpack('>I', f.read(4))[0]
-        images = np.frombuffer(f.read(), dtype=np.uint8).reshape(num_images, rows * cols)
-    return images
+# Funkcja do wczytywania danych EMNIST MNIST
+def load_emnist_images(file_path):
+    with gzip.open(file_path, 'rb') as f:
+        return np.frombuffer(f.read(), np.uint8, offset=16).reshape(-1, 28, 28)
 
-def load_labels(filename):
-    with gzip.open(filename, 'rb') as f:
-        # Wczytujemy etykiety
-        f.read(4)  # Magic number
-        num_labels = struct.unpack('>I', f.read(4))[0]
-        labels = np.frombuffer(f.read(), dtype=np.uint8)
-    return labels
+def load_emnist_labels(file_path):
+    with gzip.open(file_path, 'rb') as f:
+        return np.frombuffer(f.read(), np.uint8, offset=8)
 
-# Ścieżki do danych EMNIST Digits
-train_images_path = 'emnist-digits-train-images-idx3-ubyte.gz'
-train_labels_path = 'emnist-digits-train-labels-idx1-ubyte.gz'
-test_images_path = 'emnist-digits-test-images-idx3-ubyte.gz'
-test_labels_path = 'emnist-digits-test-labels-idx1-ubyte.gz'
+# Wczytanie danych
+train_images = load_emnist_images('emnist-mnist-train-images-idx3-ubyte.gz')
+train_labels = load_emnist_labels('emnist-mnist-train-labels-idx1-ubyte.gz')
+test_images = load_emnist_images('emnist-mnist-test-images-idx3-ubyte.gz')
+test_labels = load_emnist_labels('emnist-mnist-test-labels-idx1-ubyte.gz')
 
-# Załaduj dane
-X_train = load_images(train_images_path)
-y_train = load_labels(train_labels_path)
-X_test = load_images(test_images_path)
-y_test = load_labels(test_labels_path)
+# Normalizacja danych
+train_images = train_images / 255.0
+test_images = test_images / 255.0
 
-# Podział na zbiór treningowy i testowy (jeśli dane są już podzielone, to ten krok można pominąć)
-X_train, X_val, y_train, y_val = train_test_split(X_train, y_train, test_size=0.2, random_state=42)
+# Przekształcenie obrazów 28x28 do jednego wektora o długości 784 (28*28)
+X_train = train_images.reshape(-1, 28 * 28)
+X_test = test_images.reshape(-1, 28 * 28)
 
-# Tworzymy klasyfikator Random Forest
-model = RandomForestClassifier(n_estimators=100, random_state=42)
+# Stworzenie klasyfikatora Random Forest
+rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
 
-# Trenujemy model
-model.fit(X_train, y_train)
+# Trenowanie modelu
+rf_model.fit(X_train, train_labels)
 
 # Predykcja na zbiorze testowym
-y_pred = model.predict(X_test)
+y_pred = rf_model.predict(X_test)
 
-# Ocena modelu
-accuracy = accuracy_score(y_test, y_pred)
+# Ocena dokładności modelu
+accuracy = accuracy_score(test_labels, y_pred)
 print(f"Dokładność modelu: {accuracy:.4f}")
 
-# Raport z klasyfikacji
+# Raport klasyfikacji
 print("Raport klasyfikacji:")
-print(classification_report(y_test, y_pred))
+print(classification_report(test_labels, y_pred))
 
 # Macierz błędów
 plt.figure(figsize=(8, 6))
-sns.heatmap(confusion_matrix(y_test, y_pred), annot=True, fmt='d', cmap='Blues')
+sns.heatmap(confusion_matrix(test_labels, y_pred), annot=True, fmt='d', cmap='Blues')
 plt.title('Macierz błędów')
 plt.xlabel('Przewidywane')
 plt.ylabel('Rzeczywiste')
