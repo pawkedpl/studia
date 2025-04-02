@@ -1,0 +1,132 @@
+// Variables
+$primary-color: #1E90FF;
+$secondary-color: #333;
+$text-color: #fff;
+$background-color: #f0f2f5;
+$gray-color: #d3d3d3;
+
+// Mixins
+@mixin flex-center($gap: 20px) {
+    display: flex;
+    align-items: center;
+    gap: $gap;
+    flex-wrap: wrap;
+}
+
+@mixin responsive($max-width) {
+    @media screen and (max-width: $max-width) {
+        @content;
+    }
+}
+
+// Base styles
+body {
+    font-family: Arial, sans-serif;
+    background-color: $background-color;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: $primary-color;
+    color: $text-color;
+    text-align: center;
+    padding: 20px 0;
+}
+
+nav {
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        @include flex-center();
+    }
+    a {
+        color: $text-color;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 15px;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $gray-color;
+        }
+    }
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: $secondary-color;
+    color: $text-color;
+    text-align: center;
+    padding: 10px 0;
+}
+
+// Shared styles for sections with images and text
+.section {
+    @include flex-center();
+}
+
+.image-container {
+    background-color: $gray-color;
+    padding: 20px;
+    border-radius: 10px;
+    width: 420px;
+    margin-bottom: 10px;
+    img {
+        width: 100%;
+        border-radius: 3%;
+    }
+}
+
+.text-container {
+    max-width: 600px;
+    text-align: center;
+}
+
+// Specific sections
+.profile-section {
+    @extend .section;
+}
+
+.project-section, .project2-section {
+    @extend .section;
+}
+
+// Responsive styles
+@include responsive(768px) {
+    .section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .image-container {
+        width: 120px;
+    }
+    .text-container {
+        max-width: 100%;
+        text-align: center;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+    nav a {
+        padding: 8px 12px;
+    }
+}
+
+@include responsive(480px) {
+    header {
+        padding: 15px 0;
+    }
+    .image-container {
+        width: 100px;
+    }
+    .text-container {
+        font-size: 14px;
+    }
+}
+
