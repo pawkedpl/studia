@@ -1,0 +1,2 @@
+Średnia długość ścieżki: 25.80
+Średnia liczba odwiedzonych stanów: 377391.20
