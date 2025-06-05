@@ -1,0 +1,56 @@
+ODPALANIE SERVERA:
+C:\Users\Aldona\Desktop\moja-apka>node server.js
+
+LOGOWANIE:
+curl -X POST http://localhost:5000/api/auth/login -H "Content-Type: application/json" -d "{\"username\":\"testuser\",\"password\":\"haslo123\"}"
+
+POSITIVE
+lub zwykły user
+curl -X POST http://localhost:5000/api/auth/login -H "Content-Type: application/json" -d "{\"username\":\"zwyklyuser\",\"password\":\"tajnehaslo\"}"
+POSITIVE
+
+
+UŻYTKOWNICY
+1. DODAWANE UŻYTKOWNIKA:
+curl -X POST http://localhost:5000/api/auth/register ^
+  -H "Content-Type: application/json" ^
+  -d "{\"username\":\"zwyklyuser\",\"password\":\"tajnehaslo\"}"
+POSITIVE
+
+2. GET
+curl -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDE2MWE0NzhhZDkyMzQ4ZTliMGE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0OTExNjQzMiwiZXhwIjoxNzQ5MjAyODMyfQ.FlefQK8vlD8QfIpoLeKAtGVx7XYQl-bzWSfqSplLlPQ" http://localhost:5000/api/users
+POSITIVE
+
+3. DELETE
+curl -X DELETE -H "Authorization: Bearer <TOKEN_ADMIN>" http://localhost:5000/api/users/ID_UZYTKOWNIKA
+POSITIVE
+ 
+curl -X DELETE -H "Authorization: Bearer <TOKEN_USER>" http://localhost:5000/api/users/ID_UZYTKOWNIKA
+NEGATIVE
+
+
+PRODUKTY:
+1. PUT
+curl -X PUT http://localhost:5000/api/products/68416a7778ad92348e9b0a4a ^
+ -H "Authorization: Bearer <TOKEN>" ^
+ -H "Content-Type: application/json" ^
+ -d "{\"price\":1400}"
+POSITIVE
+
+2. GET
+curl -X GET http://localhost:5000/api/products
+POSITIVE
+
+RECENZJE:
+
+1. POST:
+curl -X POST http://localhost:5000/api/reviews ^
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NDE2MWE0NzhhZDkyMzQ4ZTliMGE0MSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc0OTExNzM0NywiZXhwIjoxNzQ5MjAzNzQ3fQ.sE8GKXCOWBbaAII0pxG4anSyl7ctuOb4SeV76S4m_3Y" ^
+-H "Content-Type: application/json" ^
+-d "{\"product\":\"68416a7778ad92348e9b0a4a\",\"rating\":5,\"comment\":\"Świetny smartfon, bardzo polecam!\"}"
+POSITIVE
+2. GET:
+curl -X GET http://localhost:5000/api/reviews
+POSITIVE
+
+
