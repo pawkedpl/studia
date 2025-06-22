@@ -1,12 +1,18 @@
 import heapq
 import random
-import matplotlib.pyplot as plt  # <- dodano
+import matplotlib.pyplot as plt
 from collections import deque, defaultdict
 
+# Rozmiar planszy (4x4 dla Piętnastki)
 N = 4
+
+# Docelowy stan układanki (od 1 do 15, na końcu 0 jako puste pole)
 GOAL_STATE = tuple(range(1, N * N)) + (0,)
+
+# Słownik pozycji docelowych każdego kafelka (dla heurystyki Manhattan)
 GOAL_POS = {GOAL_STATE[i]: (i // N, i % N) for i in range(N * N)}
 
+# Możliwe ruchy: góra, dół, lewo, prawo
 MOVES = {
     'U': (-1, 0),
     'D': (1, 0),
@@ -15,6 +21,10 @@ MOVES = {
 }
 
 def get_neighbors(state):
+    """
+    Zwraca możliwe sąsiednie stany, które można osiągnąć z bieżącego
+    przesuwając puste pole (0) w jednym z 4 kierunków.
+    """
     neighbors = []
     zero_index = state.index(0)
     zero_row, zero_col = divmod(zero_index, N)
@@ -24,27 +34,42 @@ def get_neighbors(state):
         if 0 <= new_row < N and 0 <= new_col < N:
             new_index = new_row * N + new_col
             new_state = list(state)
+            # Zamieniamy puste pole z sąsiednim kafelkiem
             new_state[zero_index], new_state[new_index] = new_state[new_index], new_state[zero_index]
             neighbors.append((move, tuple(new_state)))
     return neighbors
 
 def manhattan_distance(state):
+    """
+    Heurystyka: suma odległości Manhattan dla każdego kafelka od jego pozycji docelowej.
+    """
     return sum(
         abs((i // N) - GOAL_POS[val][0]) + abs((i % N) - GOAL_POS[val][1])
         for i, val in enumerate(state) if val != 0
     )
 
 def misplaced_tiles(state):
+    """
+    Heurystyka: liczba kafelków na nieprawidłowych pozycjach.
+    """
     return sum(1 for i, val in enumerate(state) if val != 0 and val != GOAL_STATE[i])
 
 def a_star(start_state, heuristic_fn):
+    """
+    Implementacja algorytmu A*.
+    start_state – stan początkowy
+    heuristic_fn – funkcja heurystyczna (manhattan lub misplaced)
+    """
     frontier = []
-    heapq.heappush(frontier, (0 + heuristic_fn(start_state), 0, start_state, []))
+    # Dodajemy pierwszy stan do kolejki z estymowanym kosztem (heurystyka)
+    heapq.heappush(frontier, (heuristic_fn(start_state), 0, start_state, []))
     visited = set()
     visited.add(start_state)
 
     while frontier:
         est_total_cost, cost_so_far, current_state, path = heapq.heappop(frontier)
+
+        # Warunek zakończenia – osiągnięto stan docelowy
         if current_state == GOAL_STATE:
             return path, len(visited)
 
@@ -53,10 +78,17 @@ def a_star(start_state, heuristic_fn):
                 visited.add(neighbor)
                 new_cost = cost_so_far + 1
                 est_cost = new_cost + heuristic_fn(neighbor)
+                # Dodajemy nowy stan do kolejki z nową ścieżką
                 heapq.heappush(frontier, (est_cost, new_cost, neighbor, path + [move]))
+
+    # Nie znaleziono rozwiązania (nie powinno się zdarzyć)
     return None, len(visited)
 
 def generate_initial_state_from_goal(moves=30):
+    """
+    Generuje rozwiązywalny stan początkowy przez wykonanie losowych ruchów od stanu docelowego.
+    Dzięki temu mamy pewność, że układanka jest rozwiązywalna.
+    """
     state = GOAL_STATE
     path = []
     last_move = None
@@ -64,6 +96,7 @@ def generate_initial_state_from_goal(moves=30):
 
     for _ in range(moves):
         neighbors = get_neighbors(state)
+        # Unikamy cofania ostatniego ruchu
         if last_move:
             neighbors = [(m, s) for m, s in neighbors if m != reverse_move[last_move]]
         move, next_state = random.choice(neighbors)
@@ -73,10 +106,16 @@ def generate_initial_state_from_goal(moves=30):
     return state
 
 def print_board(state):
+    """
+    Wyświetla układankę w formacie N x N.
+    """
     for i in range(0, N * N, N):
         print(state[i:i+N])
 
 def plot_results(name, steps_list, visited_list):
+    """
+    Generuje wykresy: długość rozwiązania i liczba odwiedzonych stanów.
+    """
     trials = list(range(1, len(steps_list) + 1))
 
     plt.figure(figsize=(10, 4))
@@ -103,12 +142,20 @@ def plot_results(name, steps_list, visited_list):
     plt.show()
 
 def main():
+    """
+    Główna funkcja programu:
+    - Testuje dwie heurystyki,
+    - Wykonuje 20 prób dla każdej,
+    - Wypisuje statystyki i generuje wykresy.
+    """
     heuristics = [("Manhattan", manhattan_distance), ("Misplaced", misplaced_tiles)]
     trials = 20
+
     for name, heuristic in heuristics:
         print(f"\nHeurystyka: {name}")
         steps_list = []
         visited_list = []
+
         for t in range(trials):
             print(f"\nPróba {t+1}/{trials}")
             start_state = generate_initial_state_from_goal(30)
@@ -119,6 +166,7 @@ def main():
             print("Liczba odwiedzonych stanów:", visited)
             steps_list.append(len(solution))
             visited_list.append(visited)
+
         print(f"Średnia długość ścieżki: {sum(steps_list) / trials:.2f}")
         print(f"Średnia liczba odwiedzonych stanów: {sum(visited_list) / trials:.2f}")
 
@@ -127,4 +175,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
