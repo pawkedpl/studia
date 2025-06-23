@@ -1,0 +1,21 @@
+| Normalization    | Activation      |   Learning Rate |   Train Accuracy (%) |   Test Accuracy (%) |
+|:-----------------|:----------------|----------------:|---------------------:|--------------------:|
+| L1 Normalization | relu_sigmoid    |           0.1   |                74.5  |                76   |
+| L1 Normalization | relu_sigmoid    |           0.01  |                97.75 |                99   |
+| L1 Normalization | relu_sigmoid    |           0.001 |                97.88 |                98.5 |
+| L1 Normalization | sigmoid_sigmoid |           0.1   |                97.62 |                98.5 |
+| L1 Normalization | sigmoid_sigmoid |           0.01  |                96.5  |                96.5 |
+| L1 Normalization | sigmoid_sigmoid |           0.001 |                51.38 |                47   |
+| L2 Normalization | relu_sigmoid    |           0.1   |                97.75 |                99   |
+| L2 Normalization | relu_sigmoid    |           0.01  |                98    |                99   |
+| L2 Normalization | relu_sigmoid    |           0.001 |                97.75 |                99   |
+| L2 Normalization | sigmoid_sigmoid |           0.1   |                97.75 |                99   |
+| L2 Normalization | sigmoid_sigmoid |           0.01  |                97.88 |                99   |
+| L2 Normalization | sigmoid_sigmoid |           0.001 |                51.38 |                47   |
+| No Normalization | relu_sigmoid    |           0.1   |                74    |                72.5 |
+| No Normalization | relu_sigmoid    |           0.01  |                74    |                74.5 |
+| No Normalization | relu_sigmoid    |           0.001 |                96.62 |                96.5 |
+| No Normalization | sigmoid_sigmoid |           0.1   |                88.12 |                86   |
+| No Normalization | sigmoid_sigmoid |           0.01  |                84.38 |                82   |
+| No Normalization | sigmoid_sigmoid |           0.001 |                51.38 |                47   |
+
