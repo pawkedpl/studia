@@ -8,8 +8,6 @@ N = 4
 
 # Docelowy stan układanki (od 1 do 15, na końcu 0 jako puste pole)
 GOAL_STATE = tuple(range(1, N * N)) + (0,)
-
-# Słownik pozycji docelowych każdego kafelka (dla szybkiego obliczania heurystyki Manhattan)
 GOAL_POS = {GOAL_STATE[i]: (i // N, i % N) for i in range(N * N)}
 
 # Możliwe ruchy: góra, dół, lewo, prawo
