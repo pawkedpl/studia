@@ -4,10 +4,16 @@ from typing import List, Tuple, Set
 import matplotlib.pyplot as plt
 from statistics import mean
 
+# Ustawiamy rozmiar planszy 3x3
 SIZE = 3
+
+# Definiujemy stan docelowy układanki - liczby od 1 do 8, ostatnie pole to 0 (puste miejsce)
 GOAL_STATE = tuple(range(1, SIZE * SIZE)) + (0,)
+
+# Ruchy możliwe do wykonania: góra, dół, lewo, prawo
 MOVES = {'U': -SIZE, 'D': SIZE, 'L': -1, 'R': 1}
 
+# Funkcja sprawdzająca, czy dana układanka jest rozwiązywalna (parzysta liczba inwersji)
 def is_solvable(puzzle: Tuple[int]) -> bool:
     inv_count = sum(
         1
@@ -17,6 +23,7 @@ def is_solvable(puzzle: Tuple[int]) -> bool:
     )
     return inv_count % 2 == 0
 
+# Generowanie losowego, rozwiązywalnego stanu początkowego
 def generate_start_state() -> Tuple[int]:
     puzzle = list(GOAL_STATE)
     while True:
@@ -24,6 +31,10 @@ def generate_start_state() -> Tuple[int]:
         if is_solvable(tuple(puzzle)) and puzzle.index(0) == SIZE * SIZE - 1:
             return tuple(puzzle)
 
+# Heurystyka: Manhattan Distance
+# Suma odległości każdego kafelka od jego docelowej pozycji (tylko ruchy poziome i pionowe)
+# Manhattan Distance = |x1 - x2| + |y1 - y2|
+# Ta heurystyka dobrze ocenia minimalną liczbę ruchów potrzebnych do przesunięcia kafelka na miejsce.
 def manhattan(state: Tuple[int]) -> int:
     distance = 0
     for idx, value in enumerate(state):
@@ -35,9 +46,13 @@ def manhattan(state: Tuple[int]) -> int:
         distance += abs(x1 - x2) + abs(y1 - y2)
     return distance
 
+# Heurystyka: Misplaced Tiles
+# Liczy liczbę kafelków, które nie znajdują się w swojej docelowej pozycji.
+# Ta heurystyka jest mniej dokładna niż Manhattan, bo nie uwzględnia odległości, tylko sam fakt, że kafelek jest nie na miejscu.
 def misplaced(state: Tuple[int]) -> int:
     return sum(1 for i, val in enumerate(state) if val != 0 and val != GOAL_STATE[i])
 
+# Generowanie wszystkich sąsiadów stanu poprzez przesunięcie pustego pola w dozwolonym kierunku.
 def get_neighbors(state: Tuple[int]) -> List[Tuple[str, Tuple[int]]]:
     neighbors = []
     zero_index = state.index(0)
@@ -52,11 +67,12 @@ def get_neighbors(state: Tuple[int]) -> List[Tuple[str, Tuple[int]]]:
                 neighbors.append((move, tuple(new_state)))
     return neighbors
 
+# Algorytm A* szuka najkrótszej ścieżki od stanu początkowego do celu, minimalizując koszt ruchów + heurystyka.
 def a_star(start: Tuple[int], heuristic_func) -> Tuple[List[str], int]:
     open_set = []
     heapq.heappush(open_set, (heuristic_func(start), 0, start, []))
     visited: Set[Tuple[int]] = set()
-    
+
     while open_set:
         f, g, current, path = heapq.heappop(open_set)
         if current == GOAL_STATE:
@@ -70,7 +86,7 @@ def a_star(start: Tuple[int], heuristic_func) -> Tuple[List[str], int]:
             heapq.heappush(open_set, (g + 1 + heuristic_func(neighbor), g + 1, neighbor, path + [move]))
     return [], len(visited)
 
-# Testowanie i osobne wykresy
+# Testowanie algorytmu dla dwóch heurystyk.
 if __name__ == '__main__':
     heuristics = {'Manhattan': manhattan, 'Misplaced': misplaced}
     trials = 20
@@ -91,12 +107,11 @@ if __name__ == '__main__':
             lengths.append(len(solution))
             visited_counts.append(visited)
 
-        # Tworzenie osobnych wykresów
         x = list(range(1, trials + 1))
-        
+
         plt.figure(figsize=(12, 5))
 
-        # Wykres długości ścieżki
+        # Wykres długości ścieżki do rozwiązania
         plt.subplot(1, 2, 1)
         plt.bar(x, lengths, color='skyblue')
         plt.axhline(mean(lengths), color='blue', linestyle='--', label=f'Średnia: {mean(lengths):.2f}')
@@ -117,4 +132,3 @@ if __name__ == '__main__':
         plt.suptitle(f"Wyniki dla heurystyki: {name}", fontsize=14)
         plt.tight_layout()
         plt.show()
-
