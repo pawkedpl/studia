@@ -9,22 +9,19 @@ N = 4
 # Docelowy stan układanki (od 1 do 15, na końcu 0 jako puste pole)
 GOAL_STATE = tuple(range(1, N * N)) + (0,)
 
-# Słownik pozycji docelowych każdego kafelka (dla heurystyki Manhattan)
+# Słownik pozycji docelowych każdego kafelka (dla szybkiego obliczania heurystyki Manhattan)
 GOAL_POS = {GOAL_STATE[i]: (i // N, i % N) for i in range(N * N)}
 
 # Możliwe ruchy: góra, dół, lewo, prawo
 MOVES = {
-    'U': (-1, 0),
-    'D': (1, 0),
-    'L': (0, -1),
-    'R': (0, 1),
+    'U': (-1, 0),  # przesunięcie w górę
+    'D': (1, 0),   # przesunięcie w dół
+    'L': (0, -1),  # przesunięcie w lewo
+    'R': (0, 1),   # przesunięcie w prawo
 }
 
+# Funkcja generująca sąsiednie stany poprzez przesunięcie pustego pola
 def get_neighbors(state):
-    """
-    Zwraca możliwe sąsiednie stany, które można osiągnąć z bieżącego
-    przesuwając puste pole (0) w jednym z 4 kierunków.
-    """
     neighbors = []
     zero_index = state.index(0)
     zero_row, zero_col = divmod(zero_index, N)
@@ -34,34 +31,28 @@ def get_neighbors(state):
         if 0 <= new_row < N and 0 <= new_col < N:
             new_index = new_row * N + new_col
             new_state = list(state)
-            # Zamieniamy puste pole z sąsiednim kafelkiem
+            # Zamiana pustego pola z sąsiadem
             new_state[zero_index], new_state[new_index] = new_state[new_index], new_state[zero_index]
             neighbors.append((move, tuple(new_state)))
     return neighbors
 
+# Heurystyka Manhattan - suma odległości każdego kafelka od jego docelowej pozycji
+# Mierzy minimalną liczbę ruchów potrzebnych do przesunięcia kafelka na miejsce
 def manhattan_distance(state):
-    """
-    Heurystyka: suma odległości Manhattan dla każdego kafelka od jego pozycji docelowej.
-    """
     return sum(
         abs((i // N) - GOAL_POS[val][0]) + abs((i % N) - GOAL_POS[val][1])
         for i, val in enumerate(state) if val != 0
     )
 
+# Heurystyka Misplaced Tiles - liczba kafelków nie na swoich miejscach
+# Mierzy ile kafelków jest źle ustawionych (nie uwzględnia odległości)
 def misplaced_tiles(state):
-    """
-    Heurystyka: liczba kafelków na nieprawidłowych pozycjach.
-    """
     return sum(1 for i, val in enumerate(state) if val != 0 and val != GOAL_STATE[i])
 
+# Algorytm A* - przeszukuje stany wybierając te z najniższym kosztem estymowanym
+# Korzysta z heurystyki do przewidywania kosztu dojścia do celu
 def a_star(start_state, heuristic_fn):
-    """
-    Implementacja algorytmu A*.
-    start_state – stan początkowy
-    heuristic_fn – funkcja heurystyczna (manhattan lub misplaced)
-    """
-    frontier = []
-    # Dodajemy pierwszy stan do kolejki z estymowanym kosztem (heurystyka)
+    frontier = []  # kolejka priorytetowa
     heapq.heappush(frontier, (heuristic_fn(start_state), 0, start_state, []))
     visited = set()
     visited.add(start_state)
@@ -69,26 +60,23 @@ def a_star(start_state, heuristic_fn):
     while frontier:
         est_total_cost, cost_so_far, current_state, path = heapq.heappop(frontier)
 
-        # Warunek zakończenia – osiągnięto stan docelowy
+        # Jeśli osiągnęliśmy cel - zwracamy ścieżkę i liczbę odwiedzonych stanów
         if current_state == GOAL_STATE:
             return path, len(visited)
 
+        # Przechodzimy po sąsiadach aktualnego stanu
         for move, neighbor in get_neighbors(current_state):
             if neighbor not in visited:
                 visited.add(neighbor)
                 new_cost = cost_so_far + 1
                 est_cost = new_cost + heuristic_fn(neighbor)
-                # Dodajemy nowy stan do kolejki z nową ścieżką
                 heapq.heappush(frontier, (est_cost, new_cost, neighbor, path + [move]))
 
-    # Nie znaleziono rozwiązania (nie powinno się zdarzyć)
     return None, len(visited)
 
+# Generowanie losowego stanu początkowego przesuwając puste pole od celu
+# Dzięki temu mamy pewność, że układanka jest rozwiązywalna
 def generate_initial_state_from_goal(moves=30):
-    """
-    Generuje rozwiązywalny stan początkowy przez wykonanie losowych ruchów od stanu docelowego.
-    Dzięki temu mamy pewność, że układanka jest rozwiązywalna.
-    """
     state = GOAL_STATE
     path = []
     last_move = None
@@ -96,8 +84,8 @@ def generate_initial_state_from_goal(moves=30):
 
     for _ in range(moves):
         neighbors = get_neighbors(state)
-        # Unikamy cofania ostatniego ruchu
         if last_move:
+            # Unikamy cofania ostatniego ruchu
             neighbors = [(m, s) for m, s in neighbors if m != reverse_move[last_move]]
         move, next_state = random.choice(neighbors)
         state = next_state
@@ -105,17 +93,13 @@ def generate_initial_state_from_goal(moves=30):
         last_move = move
     return state
 
+# Funkcja wyświetlająca aktualny stan planszy w formacie 4x4
 def print_board(state):
-    """
-    Wyświetla układankę w formacie N x N.
-    """
     for i in range(0, N * N, N):
         print(state[i:i+N])
 
+# Tworzenie wykresów - długość ścieżki i liczba odwiedzonych stanów
 def plot_results(name, steps_list, visited_list):
-    """
-    Generuje wykresy: długość rozwiązania i liczba odwiedzonych stanów.
-    """
     trials = list(range(1, len(steps_list) + 1))
 
     plt.figure(figsize=(10, 4))
@@ -129,7 +113,7 @@ def plot_results(name, steps_list, visited_list):
     plt.ylabel('Długość')
     plt.legend()
 
-    # Wykres odwiedzonych stanów
+    # Wykres liczby odwiedzonych stanów
     plt.subplot(1, 2, 2)
     plt.plot(trials, visited_list, marker='o', color='orange', label='Odwiedzone stany')
     plt.axhline(sum(visited_list)/len(visited_list), color='r', linestyle='--', label='Średnia')
@@ -141,13 +125,8 @@ def plot_results(name, steps_list, visited_list):
     plt.tight_layout()
     plt.show()
 
+# Główna funkcja programu - testuje dwie heurystyki w 20 próbach i tworzy wykresy
 def main():
-    """
-    Główna funkcja programu:
-    - Testuje dwie heurystyki,
-    - Wykonuje 20 prób dla każdej,
-    - Wypisuje statystyki i generuje wykresy.
-    """
     heuristics = [("Manhattan", manhattan_distance), ("Misplaced", misplaced_tiles)]
     trials = 20
 
@@ -170,8 +149,7 @@ def main():
         print(f"Średnia długość ścieżki: {sum(steps_list) / trials:.2f}")
         print(f"Średnia liczba odwiedzonych stanów: {sum(visited_list) / trials:.2f}")
 
-        # Generowanie wykresów
         plot_results(name, steps_list, visited_list)
 
-if __name__ == "__main__":
+# Uruchomienie programu\if __name__ == "__main__":
     main()
